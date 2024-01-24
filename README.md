@@ -4,7 +4,7 @@
 <li>php artisan test</li>
 </ul>
 <div style="transform: rotateX(45deg);">
-   
+   <code>
 {
     "openapi": "3.0.0",
     "info": {
@@ -128,4 +128,5 @@
         }
     }
 }
+</code>
 </div>
