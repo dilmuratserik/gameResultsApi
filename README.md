@@ -1,6 +1,7 @@
 <ul>
 <li>composer i </li>
 <li>php artisan migrate --seed</li>
+<li>php artisan key:generate</li>   
 <li>php artisan test</li>
 </ul>
 <div style="transform: rotateX(45deg);">
