@@ -1,0 +1,123 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Game Results API",
+        "description": "API for managing game results",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/results": {
+            "post": {
+                "tags": [
+                    "results"
+                ],
+                "summary": "Store a new result",
+                "description": "Stores a new gaming result with optional member association.",
+                "operationId": "6955d118a5a4bddb39553ee872c87e8f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "milliseconds"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "nullable": true
+                                    },
+                                    "milliseconds": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Result stored successfully"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/top-results": {
+            "get": {
+                "tags": [
+                    "results"
+                ],
+                "summary": "Get top results",
+                "description": "Retrieves the top gaming results with optional personal result for a specific member.",
+                "operationId": "923ac94ae0015de9d82b915124018aad",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email of the member to get personal result.",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "email"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Top results retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "top": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "email": {
+                                                        "description": "Masked email of the member.",
+                                                        "type": "string"
+                                                    },
+                                                    "milliseconds": {
+                                                        "description": "Best time in milliseconds.",
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "self": {
+                                            "properties": {
+                                                "email": {
+                                                    "description": "Email of the requesting member.",
+                                                    "type": "string"
+                                                },
+                                                "milliseconds": {
+                                                    "description": "Personal best time in milliseconds.",
+                                                    "type": "integer",
+                                                    "nullable": true
+                                                },
+                                                "place": {
+                                                    "description": "Personal place in the top results.",
+                                                    "type": "integer",
+                                                    "nullable": true
+                                                }
+                                            },
+                                            "type": "object",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
