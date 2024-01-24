@@ -3,7 +3,8 @@
 <li>php artisan migrate --seed</li>
 <li>php artisan test</li>
 </ul>
-<code>
+<div style="transform: rotateX(45deg);">
+   
 {
     "openapi": "3.0.0",
     "info": {
@@ -127,4 +128,4 @@
         }
     }
 }
-</code>
+</div>
